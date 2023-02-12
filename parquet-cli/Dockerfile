@@ -15,7 +15,9 @@
 # specific language governing permissions and limitations
 # under the License.
 
-FROM openjdk:18.0.2.1-jdk
+ARG OPENJDK_IMAGE=openjdk
+
+FROM ${OPENJDK_IMAGE}:18.0.2.1-jdk
 
 COPY target /target
 RUN ls -la /target/
