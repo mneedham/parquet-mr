@@ -44,4 +44,5 @@ jobs:
       run: mvn --file pom.xml dependency:copy-dependencies
       working-directory: parquet-cli
     - name: Build the Docker image
-      run: docker build . --file parquet-cli/Dockerfile --tag parquet-cli:$(date +%s)
+      run: docker build . --file Dockerfile --tag parquet-cli:$(date +%s)
+      working-directory: parquet-cli
