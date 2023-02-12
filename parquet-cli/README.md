@@ -16,6 +16,10 @@
   - specific language governing permissions and limitations
   - under the License.
   -->
+  
+## Docker Image
+
+I have built a Docker image containing this tool, which you can find at https://hub.docker.com/r/markhneedham/pq
 
 ## Building
 
