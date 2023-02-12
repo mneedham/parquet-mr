@@ -23,9 +23,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: before_install
@@ -41,6 +39,9 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn --file pom.xml clean install -DskipTests
+    - name: Copy Dependencies
+      run: mvn --file pom.xml dependency:copy-dependencies
+      working-directory: parquet-cli
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
