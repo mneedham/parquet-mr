@@ -23,15 +23,15 @@ on:
 
 jobs:
   build:
-#     runs-on: ubuntu-latest
-    runs-on: thrift/thrift-build:ubuntu-bionic
+    runs-on: ubuntu-latest
+#     runs-on: thrift/thrift-build:ubuntu-bionic
     steps:
     - uses: actions/checkout@v3
-#     - name: before_install
-#       env:
-#         CI_TARGET_BRANCH: $GITHUB_HEAD_REF
-#       run: |
-#         bash dev/ci-before_install.sh
+    - name: before_install
+      env:
+        CI_TARGET_BRANCH: $GITHUB_HEAD_REF
+      run: |
+        bash dev/ci-before_install.sh
     - name: Setup Java
       uses: actions/setup-java@v3
       with:
