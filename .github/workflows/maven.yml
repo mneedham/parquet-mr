@@ -53,14 +53,14 @@ jobs:
 #     - name: Use BuildX
 #       run: docker buildx use  mybuilder
     - name: Build the Docker image (amd64)
-      run: docker build . --platform linux/amd64 --file Dockerfile --tag ${{secrets.DOCKER_USERNAME}}/parquet-cli:${{ github.sha }} -t ${{secrets.DOCKER_USERNAME}}/parquet-cli:latest
+      run: docker build . --no-cache --platform linux/amd64 --file Dockerfile --tag ${{secrets.DOCKER_USERNAME}}/parquet-cli:${{ github.sha }} -t ${{secrets.DOCKER_USERNAME}}/parquet-cli:latest
       working-directory: parquet-cli
     - name: Docker Push 1
       run: docker push ${{secrets.DOCKER_USERNAME}}/parquet-cli:latest
     - name: Docker Push 2
       run: docker push ${{secrets.DOCKER_USERNAME}}/parquet-cli:${{ github.sha }}
     - name: Build the Docker image (arm64)
-      run: docker build . --platform linux/arm64 --file Dockerfile --tag ${{secrets.DOCKER_USERNAME}}/parquet-cli:${{ github.sha }}-arm64 -t ${{secrets.DOCKER_USERNAME}}/parquet-cli:latest-arm64
+      run: docker build . --no-cache --platform linux/arm64 --file Dockerfile --tag ${{secrets.DOCKER_USERNAME}}/parquet-cli:${{ github.sha }}-arm64 -t ${{secrets.DOCKER_USERNAME}}/parquet-cli:latest-arm64
       working-directory: parquet-cli
     - name: Docker Push 3
       run: docker push ${{secrets.DOCKER_USERNAME}}/parquet-cli:latest-arm64
