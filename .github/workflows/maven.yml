@@ -28,7 +28,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 11
+    - name: before_install
+      env:
+        CI_TARGET_BRANCH: $GITHUB_HEAD_REF
+      run: |
+        bash dev/ci-before_install.sh
+    - name: Setup Java
       uses: actions/setup-java@v3
       with:
         java-version: '18'
